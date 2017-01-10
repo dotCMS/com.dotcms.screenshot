@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <script>
+      function change() {
+        document.getElementById("file-input-onchange").innerHTML = "event-test";
+      }
+      console.log("msg1","msg2");
+      console.assert(false, "msg1");
+      invalid.test();
+    </script>
+  </head>
+  <body id="testbody">
+    <img src="image.png">
+    <div id="divtext1" name="divs" data-selected="test-data-attr" class="divclass">test1</div>
+    <div id="divtext2" name="divs" class="divclass">test2</div>
+    <a href="1" id="anchor1">anchor</a>
+    <a href="2" id="anchor2">anchor</a>
+    <a href="/" id="anchor3">anchor</a>
+    <a style="display:none;">invisible anchor</a>
+    <a id="anchor4"></a>
+    <a id="anchor5" href="#" onclick="document.getElementById('testspan').innerHTML='anchor clicked';">&nbsp;</a>
+    <button onclick="javascript:alert('test-alert');confirm('test-confirm');document.getElementById('testspan').innerHTML=prompt('test-prompt');">test button</button>
+    <span id="testspan"></span>
+    <input type="text" id="text-input">
+    <div id="text-node1">Testing<div style="display:none;">invisible</div><div>text<span>.</span></div></div>
+    <div id="text-node2"></div>
+    <div id="text-node3" style="display:none;">invisible text node</div>
+    <script>
+      document.cookie ='jsCookieName1=jsCookieValue1';
+      document.cookie ='jsCookieName2=jsCookieValue2';
+    </script>
+    <iframe src="iframe.htm" name="testiframe"></iframe>
+
+    <span id="file-input-onchange"></span>
+    <input id="upload" type="file" name="files" onChange="change();">
+
+    <select id="testselect">
+      <option id="testoption1" selected>select text 1</option>
+      <option id="testoption2">select text 2</option>
+    </select>
+    <input id="checkbox1" type="checkbox" checked><label for="checkbox1">checkbox text 1</label><br>
+    <input id="checkbox2" type="checkbox"><label for="checkbox2">checkbox text 2</label><br>
+    
+    <form method="POST">
+      <input type="hidden" name="form-field" value="test-form-value">
+      <input type="submit" id="form-submit">
+    </form>
+    <button id="populate-local-storage" onclick="populateLocalStorage();">save to local storage</button>
+    <button id="load-from-local-storage" onclick="loadFromLocalStorage();">load from local storage</button>
+    <div id="local-storage-value-holder"></div>
+    <script>
+      var populateLocalStorage = function(){
+        localStorage.setItem("local-storage-test", "test-value");
+      };
+      var loadFromLocalStorage = function(){
+        document.getElementById("local-storage-value-holder").innerHTML
+          = localStorage.getItem("local-storage-test");
+      };
+    </script>
+  </body>
+</html>

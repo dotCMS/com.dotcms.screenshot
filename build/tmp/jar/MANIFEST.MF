@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-Description: dotCMS Osgi Screenshot Servlet
+Bundle-SymbolicName: com.dotcms.screenshot
+Bundle-ManifestVersion: 2
+Bnd-LastModified: 1483652377000
+Bundle-DocURL: https://dotcms.com
+Bundle-Vendor: dotcms
+Import-Package: com.dotmarketing.osgi,javax.servlet;version="[3.0,4)",
+ javax.servlet.http;version="[3.0,4)",com.dotmarketing.business,org.ap
+ ache.catalina,org.apache.catalina.core,com.dotmarketing.util,com.dotm
+ arketing.portlets.contentlet.business,com.dotmarketing.portlets.htmlp
+ ageasset.business,com.dotmarketing.beans,javax.net.ssl
+Tool: Bnd-2.1.0.20130426-122213
+Override-Classes: com.dotcms.osgi.ScreenShotServlet
+Export-Package: com.dotcms.osgi;version="0.1";uses:="com.dotmarketing.
+ osgi,javax.servlet,javax.servlet.http,org.apache.catalina.core",com.d
+ otcms.screenshot;version="0.1"
+Bundle-Name: Osgi Screenshot Servlet
+Bundle-Version: 0.1
+Bundle-ClassPath: .,/libs/commons-codec-1.10.jar,/libs/guava-19.0.jar,
+ /libs/jna-3.0.9.jar,/libs/zt-exec-1.7.jar,/libs/commons-io-2.2.jar,/l
+ ibs/httpclient-4.5.2.jar,/libs/selenium-api-2.53.0.jar,/libs/zt-proce
+ ss-1.3.jar,/libs/commons-lang-2.6.jar,/libs/httpclient-cache-4.5.2.ja
+ r,/libs/selenium-remote-driver-2.53.0.jar,/libs/commons-logging-1.2.j
+ ar,/libs/httpcore-4.4.4.jar,/libs/selenium-server-2.53.0.jar,/libs/fa
+ st-classpath-scanner-1.93.0.jar,/libs/jbrowserdriver-0.17.3.jar,/libs
+ /slf4j-api-1.7.2.jar
+Bundle-Activator: com.dotcms.osgi.Activator
+Created-By: 1.8.0_112 (Oracle Corporation)
+

@@ -1,0 +1,67 @@
+apply plugin: 'application'
+apply plugin: 'osgi'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = '1.8'
+version = '0.1'
+
+
+repositories {
+	maven {
+        url "http://repo.dotcms.com/artifactory/libs-release"
+    }
+}
+configurations {
+     extraLibs
+ }
+dependencies {
+	compile fileTree(dir: 'src/main/resources/libs', include: '*.jar')
+	compile (group: 'com.dotcms', name: 'dotcms', version: '3.6.0'){
+		transitive = true
+	}
+	
+	compile "javax.servlet:javax.servlet-api:3.0.1"
+	compile 'org.apache.tomcat:tomcat-catalina:8.0.18'
+    compile 'com.machinepublishers:jbrowserdriver:0.17.3'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.0.1'
+    extraLibs 'com.machinepublishers:jbrowserdriver:0.17.3'
+}
+
+jar {
+    from(configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }) {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+    manifest {
+        name = 'Osgi Screenshot Servlet'
+        instruction 'Bundle-Vendor', 'dotcms'
+        instruction 'Bundle-Description', 'dotCMS Osgi Screenshot Servlet'
+        instruction 'Bundle-DocURL', 'https://dotcms.com'
+        instruction 'Bundle-Activator', 'com.dotcms.osgi.Activator'
+        instruction 'Bundle-ClassPath', '.,/libs/commons-codec-1.10.jar,/libs/guava-19.0.jar,/libs/jna-3.0.9.jar,/libs/zt-exec-1.7.jar,/libs/commons-io-2.2.jar,/libs/httpclient-4.5.2.jar,/libs/selenium-api-2.53.0.jar,/libs/zt-process-1.3.jar,/libs/commons-lang-2.6.jar,/libs/httpclient-cache-4.5.2.jar,/libs/selenium-remote-driver-2.53.0.jar,/libs/commons-logging-1.2.jar,/libs/httpcore-4.4.4.jar,/libs/selenium-server-2.53.0.jar,/libs/fast-classpath-scanner-1.93.0.jar,/libs/jbrowserdriver-0.17.3.jar,/libs/slf4j-api-1.7.2.jar'
+        instruction 'Import-Package', 'com.dotmarketing.osgi.*,javax.servlet.*,com.dotmarketing.business.*,org.apache.catalina.*,com.dotmarketing.util.*,com.dotmarketing.portlets.contentlet.business.*,com.dotmarketing.portlets.htmlpageasset.business.*,com.dotmarketing.beans.*,javax.net.ssl.*,javax.net.ssl'
+        instruction 'Override-Classes', 'com.dotcms.osgi.ScreenShotServlet'
+
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.9'
+}
+
+task getDeps(type: Copy) {
+  from configurations.extraLibs
+  into 'src/main/resources/libs'
+}
+
+
+
+
+
+
+
+
+
+
