@@ -2,10 +2,11 @@
 README
 ------
 
-This bundle plugin is an example of how to use services provide by other bundles and
- how to register servlets and filters.
+This bundle plugin is the begining work of the ability to screenshot a rendered dotCMS page.  Where this ends: JBrowserDriver does not work as an OSGI plugin becuase it shells out and tries to do some magic and set a classpath to itself but it is wrapped up in the OSGI bundle.  JBrowserDriver will work as a static plugin.
 
-How to build this example
+
+
+How to build this plugin
 -------------------------
 
 Note: As you can see, this plugin depends on com.dotcms.service example.
