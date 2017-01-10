@@ -2,7 +2,7 @@
 README
 ------
 
-This bundle plugin is the begining work of the ability to screenshot a rendered dotCMS page.  Where this ends: JBrowserDriver does not work as an OSGI plugin becuase it shells out and tries to do some magic and set a classpath to itself but it is wrapped up in the OSGI bundle.  JBrowserDriver will work as a static plugin.
+This bundle plugin is the begining work (does not right now) of the ability to screenshot a rendered dotCMS page.  Where work ended: JBrowserDriver does not work as an OSGI plugin becuase it shells out and tries to do some magic and set a classpath to itself but it is wrapped up in the OSGI bundle.  JBrowserDriver will work as a static plugin.
 
 
 
